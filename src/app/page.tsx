@@ -1,207 +1,223 @@
-"use client";
-
-import React from "react";
-import { Button } from "@/components/ui/button";
+// New home page for Elevated Finance
+// This file is used to replace the existing src/app/page.tsx in the GitHub repository.
+// It provides a simplified layout with working navigation buttons and sections.
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check, TrendingUp, GraduationCap, Shield, ArrowRight, Sparkles, Coins, LineChart } from "lucide-react";
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
-const Logo = () => (
-  <div className="flex items-center gap-2">
-    <Image src="/ef-logo.png" alt="Elevated Finance" width={140} height={40} />
-  </div>
-);
-
-export default function ElevatedFinanceLanding() {
+export default function HomePage() {
   return (
-    <div className="min-h-screen bg-white text-slate-800">
-      <header className="sticky top-0 z-40 w-full border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-        <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
-          <Logo />
-          <nav className="hidden md:flex items-center gap-8 text-sm">
-            <a href="#features" className="hover:text-[#143C8C] transition">Features</a>
-            <a href="#how" className="hover:text-[#143C8C] transition">How it Works</a>
-            <a href="#pricing" className="hover:text-[#143C8C] transition">Pricing</a>
-            <a href="#faq" className="hover:text-[#143C8C] transition">FAQ</a>
-          </nav>
-          <div className="flex items-center gap-2">
-            <Button variant="ghost" className="hidden sm:inline-flex">Log in</Button>
-            <Button>Get Started</Button>
+    <>
+      {/* Header with navigation */}
+      <header className="border-b">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
+          <div className="text-xl font-bold text-[#143C8C]">
+            Elevated Finance
           </div>
-        </div>
+          <div className="hidden space-x-6 md:flex text-sm text-slate-600">
+            <a href="#features" className="hover:text-[#143C8C]">Features</a>
+            <a href="#how" className="hover:text-[#143C8C]">How it works</a>
+            <a href="#pricing" className="hover:text-[#143C8C]">Pricing</a>
+            <a href="#faq" className="hover:text-[#143C8C]">FAQ</a>
+          </div>
+          <div className="flex space-x-2">
+            <Link href="/login">
+              <Button variant="ghost">Log in</Button>
+            </Link>
+            <Link href="/signup">
+              <Button>Get Started</Button>
+            </Link>
+          </div>
+        </nav>
       </header>
 
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#E6F0FF] via-transparent to-white pointer-events-none"/>
-        <div className="mx-auto max-w-6xl px-4 py-20 grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#E6F0FF] px-3 py-1 text-xs text-[#143C8C] mb-4">
-              <Sparkles className="h-3 w-3"/> New • Student-friendly investing
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight text-slate-900">
-              Learn. Invest. <span className="text-[#143C8C]">Grow.</span>
-            </h1>
-            <p className="mt-4 text-lg text-slate-600 max-w-xl">
-              Elevated Finance helps beginners build money confidence with bite‑size lessons and automated investing powered by modern Wealth‑as‑a‑Service rails.
-            </p>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
-              <Button>Start free</Button>
-              <Button variant="outline" className="gap-1">
-                Watch demo <ArrowRight className="h-4 w-4"/>
-              </Button>
-              <div className="text-xs text-slate-500">No card required • Cancel anytime</div>
-            </div>
-            <div className="mt-6 flex items-center gap-6 text-sm text-slate-600">
-              <div className="flex items-center gap-2"><Shield className="h-4 w-4 text-[#143C8C]"/> KYC & compliance handled</div>
-              <div className="flex items-center gap-2"><TrendingUp className="h-4 w-4 text-[#143C8C]"/> Fractional shares</div>
-            </div>
-          </div>
-          <div className="relative">
-            <div className="rounded-2xl border bg-white shadow-xl p-4">
-              <div className="rounded-xl bg-[#E6F0FF] h-56 w-full" />
-              <div className="mt-4 grid grid-cols-3 gap-3">
-                {["VOO","VIG","AAPL"].map((t,i)=> (
-                  <Card key={i} className="rounded-2xl shadow-sm">
-                    <CardContent className="p-4">
-                      <div className="text-xs text-slate-500">Holding</div>
-                      <div className="font-semibold">{t}</div>
-                      <div className="mt-2 flex items-center gap-1 text-emerald-600 text-sm"><TrendingUp className="h-4 w-4"/> +3.2%</div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </div>
+      {/* Hero section */}
+      <section className="mx-auto max-w-4xl px-4 py-16 text-center">
+        <h1 className="text-4xl font-extrabold text-[#143C8C]">
+          Invest smarter, learn faster
+        </h1>
+        <p className="mt-4 text-slate-600">
+          Your journey to financial freedom starts here.
+        </p>
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <Link href="/signup">
+            <Button>Start free</Button>
+          </Link>
+          <Link href="/demo">
+            <Button variant="outline" className="gap-1">
+              Watch demo <ArrowRight className="h-4 w-4" />
+            </Button>
+          </Link>
         </div>
       </section>
 
-      <section id="features" className="mx-auto max-w-6xl px-4 py-16">
-        <h2 className="text-3xl font-bold text-slate-900">Why Elevated Finance?</h2>
-        <p className="mt-2 text-slate-600 max-w-2xl">Designed for students and busy beginners. Learn the essentials, automate the rest, and track your progress with clarity.</p>
-        <div className="mt-10 grid md:grid-cols-3 gap-6">
-          {[
-            { icon: GraduationCap, title: "Bite‑size Lessons", desc: "Plain‑English modules that fit your schedule." },
-            { icon: LineChart, title: "Automated Investing", desc: "Put your plan on autopilot with fractional shares." },
-            { icon: Shield, title: "Bank‑grade Compliance", desc: "ID verification and custody through vetted partners." },
-          ].map((f, i)=> (
-            <Card key={i} className="rounded-2xl border shadow-sm">
-              <CardContent className="p-6">
-                <f.icon className="h-6 w-6 text-[#143C8C]"/>
-                <div className="mt-3 font-semibold">{f.title}</div>
-                <p className="mt-1 text-sm text-slate-600">{f.desc}</p>
+      {/* Features section */}
+      <section id="features" className="bg-[#F7FAFF] py-16">
+        <div className="mx-auto max-w-6xl px-4">
+          <h2 className="mb-8 text-3xl font-bold text-center text-[#143C8C]">
+            Features
+          </h2>
+          <div className="grid gap-8 md:grid-cols-3">
+            <Card>
+              <CardContent>
+                <h3 className="mb-2 text-xl font-semibold">Learn by doing</h3>
+                <p className="text-sm text-slate-600">
+                  Interactive lessons integrated with investing tasks help you
+                  understand concepts as you invest.
+                </p>
               </CardContent>
             </Card>
-          ))}
-        </div>
-      </section>
-
-      <section id="how" className="bg-[#F7FAFF] py-16">
-        <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-3xl font-bold text-slate-900">How it works</h2>
-          <div className="mt-8 grid md:grid-cols-3 gap-6">
-            {[{
-              step:"1. Sign up",
-              text:"Create your account and verify your ID in minutes."
-            },{
-              step:"2. Learn & choose",
-              text:"Complete quick lessons and pick a goal: growth, dividends, or balanced."
-            },{
-              step:"3. Automate",
-              text:"Link your bank, set an amount, and let fractional investing run."
-            }].map((s,i)=> (
-              <Card key={i} className="rounded-2xl">
-                <CardContent className="p-6">
-                  <div className="text-sm font-semibold text-[#143C8C]">{s.step}</div>
-                  <p className="mt-2 text-slate-700">{s.text}</p>
-                  <div className="mt-4 flex items-center gap-2 text-xs text-slate-500"><Check className="h-4 w-4 text-emerald-600"/> No hidden fees</div>
-                </CardContent>
-              </Card>
-            ))}
+            <Card>
+              <CardContent>
+                <h3 className="mb-2 text-xl font-semibold">Automated investing</h3>
+                <p className="text-sm text-slate-600">
+                  Set your goals and let our automation invest in ETFs and
+                  fractional shares on your behalf.
+                </p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent>
+                <h3 className="mb-2 text-xl font-semibold">Track your progress</h3>
+                <p className="text-sm text-slate-600">
+                  See your portfolio grow over time, earn badges, and stay
+                  motivated with personalized insights.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      <section id="pricing" className="mx-auto max-w-6xl px-4 py-16">
-        <h2 className="text-3xl font-bold text-slate-900">Simple pricing</h2>
-        <p className="mt-2 text-slate-600">Start free. Upgrade when you want more power.</p>
-        <div className="mt-8 grid md:grid-cols-2 gap-6">
-          <Card className="rounded-2xl border shadow-sm">
-            <CardContent className="p-6">
-              <div className="text-sm font-semibold text-[#143C8C]">Free</div>
-              <div className="mt-2 text-4xl font-bold">$0</div>
-              <p className="mt-2 text-slate-600">Lessons, basic tracker, paper trading.</p>
-              <ul className="mt-4 space-y-2 text-sm text-slate-700">
-                <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600"/> Core lessons</li>
-                <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600"/> Watchlists</li>
-                <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600"/> Email tips</li>
-              </ul>
-              <Button variant="outline" className="mt-6 w-full">Get Started</Button>
-            </CardContent>
-          </Card>
-
-          <Card className="rounded-2xl border-2 border-[#143C8C] shadow-sm">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div className="text-sm font-semibold text-[#143C8C]">Premium</div>
-                <div className="inline-flex items-center gap-1 rounded-full bg-[#E6F0FF] px-2 py-1 text-[10px] text-[#143C8C]">
-                  <Coins className="h-3 w-3"/> Best value
-                </div>
-              </div>
-              <div className="mt-2 text-4xl font-bold">$4.99<span className="text-base font-medium text-slate-500">/mo</span></div>
-              <p className="mt-2 text-slate-600">Automation, real portfolios, advanced insights.</p>
-              <ul className="mt-4 space-y-2 text-sm text-slate-700">
-                <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600"/> Automated deposits</li>
-                <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600"/> Fractional shares</li>
-                <li className="flex items-center gap-2"><Check className="h-4 w-4 text-emerald-600"/> Deeper analytics</li>
-              </ul>
-              <Button className="mt-6 w-full">Upgrade</Button>
-            </CardContent>
-          </Card>
+      {/* How it works section */}
+      <section id="how" className="py-16">
+        <div className="mx-auto max-w-4xl px-4">
+          <h2 className="mb-8 text-3xl font-bold text-center text-[#143C8C]">
+            How it works
+          </h2>
+          <ol className="space-y-6 text-left">
+            <li>
+              <span className="font-semibold text-[#143C8C]">
+                1. Sign up:&nbsp;
+              </span>
+              Create your account in minutes and complete basic verification.
+            </li>
+            <li>
+              <span className="font-semibold text-[#143C8C]">
+                2. Learn:&nbsp;
+              </span>
+              Take bite‑sized lessons and quizzes to build a foundation in
+              finance and investing.
+            </li>
+            <li>
+              <span className="font-semibold text-[#143C8C]">
+                3. Invest:&nbsp;
+              </span>
+              Choose a goal (growth, dividends, or balanced) and let our
+              system invest automatically.
+            </li>
+            <li>
+              <span className="font-semibold text-[#143C8C]">
+                4. Track:&nbsp;
+              </span>
+              Monitor your returns and progress; adjust contributions anytime.
+            </li>
+          </ol>
         </div>
       </section>
 
-      <section id="faq" className="bg-[#F7FAFF] py-16">
-        <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-3xl font-bold text-slate-900">FAQ</h2>
-          <div className="mt-8 grid md:grid-cols-2 gap-6 text-slate-700">
-            <div>
-              <h3 className="font-semibold">Is this for beginners?</h3>
-              <p className="mt-2 text-sm">Yes. Lessons are plain‑English and the app handles the technical parts.</p>
-            </div>
-            <div>
-              <h3 className="font-semibold">How do deposits work?</h3>
-              <p className="mt-2 text-sm">Link your bank, choose an amount, and automate weekly or monthly contributions.</p>
-            </div>
-            <div>
-              <h3 className="font-semibold">Are there hidden fees?</h3>
-              <p className="mt-2 text-sm">No. Pricing is transparent and you can cancel anytime.</p>
-            </div>
-            <div>
-              <h3 className="font-semibold">Do I need prior investing knowledge?</h3>
-              <p className="mt-2 text-sm">No. You’ll learn while you build your first portfolio.</p>
-            </div>
+      {/* Pricing section */}
+      <section id="pricing" className="bg-[#F7FAFF] py-16">
+        <div className="mx-auto max-w-6xl px-4 text-center">
+          <h2 className="mb-8 text-3xl font-bold text-[#143C8C]">Pricing</h2>
+          <div className="grid gap-8 md:grid-cols-2">
+            <Card>
+              <CardContent>
+                <h3 className="text-xl font-semibold">Free</h3>
+                <p className="mt-2 text-slate-600 text-sm">
+                  Access lessons, portfolio tracking, and paper trading.
+                </p>
+                <Link href="/signup">
+                  <Button variant="outline" className="mt-6 w-full">
+                    Get started
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+            <Card className="border-2 border-[#143C8C]">
+              <CardContent>
+                <h3 className="text-xl font-semibold">Premium</h3>
+                <p className="mt-2 text-slate-600 text-sm">
+                  Unlock automation, fractional investing, and in‑depth
+                  analytics.
+                </p>
+                <Link href="/upgrade">
+                  <Button className="mt-6 w-full">Upgrade</Button>
+                </Link>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="rounded-2xl bg-gradient-to-br from-[#143C8C] to-[#0f2e6b] p-8 text-white flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="text-2xl md:text-3xl font-semibold">Ready to elevate your money?</h3>
-              <p className="mt-2 text-white/80">Start free today — build habits that last a lifetime.</p>
-            </div>
-            <Button className="bg-white text-[#143C8C] hover:bg-slate-100">Create your account</Button>
+      {/* FAQ section */}
+      <section id="faq" className="py-16">
+        <div className="mx-auto max-w-4xl px-4">
+          <h2 className="mb-8 text-3xl font-bold text-center text-[#143C8C]">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-6">
+            <details className="rounded-xl border p-4">
+              <summary className="cursor-pointer font-medium text-[#143C8C]">
+                Is Elevated Finance free to use?
+              </summary>
+              <p className="mt-2 text-slate-600">
+                Yes, you can start learning and paper trading for free. Our
+                premium plan unlocks automation and advanced analytics.
+              </p>
+            </details>
+            <details className="rounded-xl border p-4">
+              <summary className="cursor-pointer font-medium text-[#143C8C]">
+                What investments do you support?
+              </summary>
+              <p className="mt-2 text-slate-600">
+                We support fractional shares of major ETFs and stocks
+                through our brokerage partner. More assets are coming soon.
+              </p>
+            </details>
+            <details className="rounded-xl border p-4">
+              <summary className="cursor-pointer font-medium text-[#143C8C]">
+                Can I cancel my subscription anytime?
+              </summary>
+              <p className="mt-2 text-slate-600">
+                Absolutely. You can switch between free and premium plans or
+                cancel at any time from your dashboard.
+              </p>
+            </details>
           </div>
         </div>
       </section>
 
-      <footer className="border-t">
-        <div className="mx-auto max-w-6xl px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <Logo />
-          <p className="text-xs text-slate-500">© {new Date().getFullYear()} Elevated Finance. All rights reserved.</p>
-        </div>
+      {/* Final call to action */}
+      <section className="bg-[#143C8C] py-16 text-center">
+        <h2 className="mb-4 text-3xl font-bold text-white">
+          Ready to get started?
+        </h2>
+        <p className="mb-6 text-white">
+          Create your account and start your investing journey today.
+        </p>
+        <Link href="/signup">
+          <Button className="bg-white text-[#143C8C] hover:bg-slate-100">
+            Create your account
+          </Button>
+        </Link>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-[#0f2e6b] py-8 text-center text-sm text-white">
+        © {new Date().getFullYear()} Elevated Finance. All rights reserved.
       </footer>
-    </div>
+    </>
   );
 }
