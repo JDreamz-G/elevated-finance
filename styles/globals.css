@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ef-blue: 20 60 140;
+}
+
+body {
+  color: rgb(30 30 30);
+  background-color: white;
+}
